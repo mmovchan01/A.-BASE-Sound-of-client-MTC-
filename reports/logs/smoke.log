@@ -1,0 +1,58 @@
+data (131000, 2048) classes [44000 21500 44000 21500]
+split: train 4500 val 500
+/home/runner/work/A.-BASE-Sound-of-client-MTC-/A.-BASE-Sound-of-client-MTC-/mtc_lib/models.py:233: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:820.)
+  tot_loss += float(loss) * len(sel)
+[smoke] epoch   1/3 loss 1.0599 val_f1 0.6785 ema nan
+[smoke] epoch   2/3 loss 0.7112 val_f1 0.7039 ema nan
+[smoke] epoch   3/3 loss 0.6265 val_f1 0.7101 ema nan
+{
+  "name": "smoke",
+  "kind": "mlp",
+  "cfg": {
+    "name": "smoke",
+    "kind": "mlp",
+    "hidden": [
+      64
+    ],
+    "epochs": 3
+  },
+  "val_f1": 0.7100588566300259,
+  "val_f1_top_hist": 0.7100588566300259,
+  "best_epoch": 2,
+  "params": 131396,
+  "val_f1_offsets": 0.7477434491939612,
+  "offsets": [
+    0.20000000000000018,
+    0.30000000000000027,
+    0.6000000000000001,
+    -0.7
+  ],
+  "confusion": [
+    [
+      110,
+      12,
+      31,
+      13
+    ],
+    [
+      3,
+      64,
+      4,
+      10
+    ],
+    [
+      35,
+      12,
+      109,
+      10
+    ],
+    [
+      4,
+      10,
+      3,
+      70
+    ]
+  ],
+  "sec": 0.8
+}

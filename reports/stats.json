@@ -1,0 +1,34 @@
+{
+  "n_train": 131000,
+  "dim": 2048,
+  "classes": [
+    "angry",
+    "neutral",
+    "positive",
+    "sad"
+  ],
+  "class_counts": {
+    "angry": 44000,
+    "neutral": 21500,
+    "positive": 44000,
+    "sad": 21500
+  },
+  "n_public_test": 6600,
+  "global": {
+    "mean_abs": 0.013495047999221372,
+    "std_mean": 0.009795026117372138,
+    "half_norms_mean": 1.0,
+    "half_norms_std": 4.2914425790741006e-08
+  },
+  "exact_duplicate_rows": 0,
+  "dup_group_sizes": {
+    "1": 131000
+  },
+  "dup_groups": 0,
+  "dup_groups_label_consistent": 0,
+  "train_test_exact_matches": 0,
+  "quant": {
+    "max_abs_err": 0.0014209523797035217,
+    "mean_abs_err": 9.139277244685218e-05
+  }
+}

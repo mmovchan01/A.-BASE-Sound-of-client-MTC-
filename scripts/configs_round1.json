@@ -1,0 +1,101 @@
+[
+  {
+    "name": "lin_std",
+    "kind": "mlp",
+    "hidden": [],
+    "epochs": 40,
+    "lr": 0.003
+  },
+  {
+    "name": "mlp_h256",
+    "kind": "mlp",
+    "hidden": [
+      256
+    ]
+  },
+  {
+    "name": "mlp_base",
+    "kind": "mlp",
+    "hidden": [
+      512,
+      256
+    ]
+  },
+  {
+    "name": "mlp_h1024",
+    "kind": "mlp",
+    "hidden": [
+      1024
+    ]
+  },
+  {
+    "name": "mlp_base_ls05",
+    "kind": "mlp",
+    "hidden": [
+      512,
+      256
+    ],
+    "label_smoothing": 0.05
+  },
+  {
+    "name": "mlp_base_mixup02",
+    "kind": "mlp",
+    "hidden": [
+      512,
+      256
+    ],
+    "mixup_alpha": 0.2
+  },
+  {
+    "name": "mlp_base_ema999",
+    "kind": "mlp",
+    "hidden": [
+      512,
+      256
+    ],
+    "ema_decay": 0.999
+  },
+  {
+    "name": "mlp_base_cwnone",
+    "kind": "mlp",
+    "hidden": [
+      512,
+      256
+    ],
+    "class_weight_mode": "none"
+  },
+  {
+    "name": "mlp_base_dr05",
+    "kind": "mlp",
+    "hidden": [
+      512,
+      256
+    ],
+    "dropout": 0.5
+  },
+  {
+    "name": "mlp_base_ep80",
+    "kind": "mlp",
+    "hidden": [
+      512,
+      256
+    ],
+    "epochs": 80,
+    "lr": 0.002
+  },
+  {
+    "name": "mlp_bnin",
+    "kind": "mlp",
+    "hidden": [
+      512,
+      256
+    ],
+    "input_norm": "batchnorm"
+  },
+  {
+    "name": "knn16",
+    "kind": "knn",
+    "k": 16,
+    "temp": 20.0
+  }
+]

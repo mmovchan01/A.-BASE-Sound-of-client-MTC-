@@ -1,0 +1,94 @@
+name: experiments
+on:
+  push:
+    branches: ['arena/e6944da1-a-base-sound-of-client-mtc']
+    paths: ['.github/workflows/experiments.yml', 'scripts/experiment.py', 'mtc_lib/**', 'scripts/configs_round*.json']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  prep-config:
+    runs-on: ubuntu-latest
+    outputs:
+      configs: ${{ steps.read.outputs.configs }}
+      quick: ${{ steps.read.outputs.quick }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - id: read
+        run: |
+          python3 - <<'PY'
+          import json, os
+          cfgs = json.load(open('scripts/configs_round1.json'))
+          # a tiny smoke config is always run first in its own job
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+              f.write("configs=" + json.dumps(cfgs) + "\n")
+              f.write("quick=" + json.dumps([{"name": "smoke", "kind": "mlp", "hidden": [64], "epochs": 3}]) + "\n")
+          print(len(cfgs), "configs")
+          PY
+  smoke:
+    needs: prep-config
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: deps
+        run: |
+          python3 -m pip install --quiet --break-system-packages numpy
+          python3 -m pip install --quiet --break-system-packages torch --index-url https://download.pytorch.org/whl/cpu
+      - name: run
+        env:
+          CFG: ${{ needs.prep-config.outputs.quick }}
+        run: |
+          mkdir -p reports/logs reports/jobs
+          python3 -c "import json,sys;cfgs=json.loads(sys.argv[1]);open('/tmp/cfg.json','w').write(json.dumps(cfgs))" "$CFG"
+          python3 scripts/experiment.py --configs /tmp/cfg.json --n 5000 --out-dir reports/jobs 2>&1 | tee -a reports/logs/smoke.log
+      - name: commit
+        if: always()
+        run: |
+          git config user.name "exp-bot"
+          git config user.email "exp-bot@example.com"
+          git add -f reports
+          git commit -m "exp: smoke [skip ci]" || echo "nothing to commit"
+          for i in 1 2 3 4 5; do
+            git pull --rebase --autostash origin arena/e6944da1-a-base-sound-of-client-mtc && git push origin HEAD:arena/e6944da1-a-base-sound-of-client-mtc && break || sleep 5
+          done
+  run:
+    needs: prep-config
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    strategy:
+      fail-fast: false
+      max-parallel: 12
+      matrix:
+        config: ${{ fromJson(needs.prep-config.outputs.configs) }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: deps
+        run: |
+          python3 -m pip install --quiet --break-system-packages numpy
+          python3 -m pip install --quiet --break-system-packages torch --index-url https://download.pytorch.org/whl/cpu
+      - name: run
+        env:
+          CFG: ${{ toJson(matrix.config) }}
+        run: |
+          mkdir -p reports/logs reports/jobs
+          python3 -c "import json,sys,os;open('/tmp/cfg.json','w').write(json.dumps([json.loads(sys.argv[1])]))" "$CFG"
+          python3 scripts/experiment.py --configs /tmp/cfg.json --out-dir reports/jobs 2>&1 | tee -a "reports/logs/${{ strategy.job-index }}_${{ github.event_name }}.log"
+      - name: commit
+        if: always()
+        run: |
+          git config user.name "exp-bot"
+          git config user.email "exp-bot@example.com"
+          git add -f reports
+          git commit -m "exp [skip ci]" || echo "nothing to commit"
+          for i in 1 2 3 4 5; do
+            git pull --rebase --autostash origin arena/e6944da1-a-base-sound-of-client-mtc && git push origin HEAD:arena/e6944da1-a-base-sound-of-client-mtc && break || sleep 5
+          done
