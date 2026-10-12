@@ -7,14 +7,10 @@ Trains the final model (a small MLP ensemble over frozen audio embeddings) from
     <out>/model_0.pt ... model_{K-1}.pt   - PyTorch state dicts + scaler + config + offsets
     <out>/meta.json                       - architecture, class order, calibration, metrics
 
-Fully reproducible: every random generator is seeded from ``--seed`` (default 42), the
-same seed is written to the submission file name by ``predict.py``.
-
-Usage
------
-    python train.py --data train.npz --out models/final_seed42 --seed 42
-
-Runtime: ~10 min on 4 CPU cores (131k x 2048 embeddings, 6-member ensemble).
+Reproduction: pass the recorded --seed and final_config.json. Without --seed a
+new random seed is generated and saved in model metadata. The validation split is
+used for checkpoint selection and decision calibration; reported F1 is a development
+estimate, not an unbiased test score. predict.py performs inference only.
 """
 from __future__ import annotations
 
@@ -81,6 +77,8 @@ def main():
     if args.threads:
         torch.set_num_threads(args.threads)
     out_dir = args.out or f"models/final_seed{args.seed}"
+    if os.path.exists(out_dir) and os.listdir(out_dir):
+        raise ValueError("Output directory must be empty to prevent mixing checkpoints")
     os.makedirs(out_dir, exist_ok=True)
     set_seed(args.seed)
 
@@ -88,6 +86,10 @@ def main():
     d = np.load(args.data, allow_pickle=False)
     X_all = np.asarray(d["embeddings"], dtype=np.float32)
     y_all = encode(d["targets"])
+    if X_all.ndim != 2 or len(X_all) != len(y_all) or not np.isfinite(X_all).all():
+        raise ValueError("Invalid training embeddings")
+    if set(y_all) != set(range(4)):
+        raise ValueError("Training data must contain all four classes")
     print(f"[data] {X_all.shape} embeddings, classes: {dict(zip(*np.unique(d['targets'], return_counts=True)))}")
 
     tr_idx, ho_idx = stratified_split(y_all, args.holdout, seed=args.seed)

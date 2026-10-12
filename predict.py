@@ -4,8 +4,8 @@
 Loads the weights produced by ``train.py`` (no training happens here), runs the ensemble
 on a test npz and writes the submission file:
 
-    python predict.py --weights models/final_seed42 --test public_test.npz \
-                      --out submission_seed_42.npz
+    python predict.py --weights models/final_seed269860790 --test public_test.npz \
+                      --out submission_seed_269860790.npz
 
 The output npz mirrors the format of ``sample_submission.npz``: keys ``embeddings``
 (the provided test embeddings) and ``targets`` (predicted emotion strings, dtype '<U8').
@@ -69,7 +69,7 @@ def predict_proba_ensemble(models, X, batch_size=8192, device="cpu") -> np.ndarr
 
 def main():
     ap = argparse.ArgumentParser(description="Predict emotions for a test npz and write a submission")
-    ap.add_argument("--weights", default="models/final_seed42", help="directory with model_*.pt / meta.json")
+    ap.add_argument("--weights", default="models/final_seed269860790", help="directory with model_*.pt / meta.json")
     ap.add_argument("--test", default="public_test.npz", help="test npz containing 'embeddings'")
     ap.add_argument("--out", default=None, help="output submission path (default submission_seed_<SEED>.npz)")
     ap.add_argument("--device", default="cpu")

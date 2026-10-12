@@ -5,3 +5,5 @@ __pycache__/
 models/
 submissions/
 reports/devdata.npz
+
+solution_seed_*.zip
