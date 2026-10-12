@@ -1,0 +1,320 @@
+[linear] epoch   1/30 loss 0.7841 val_f1 0.7651 ema nan
+[linear] epoch   2/30 loss 0.5644 val_f1 0.7812 ema nan
+[linear] epoch   3/30 loss 0.5350 val_f1 0.7882 ema nan
+[linear] epoch   4/30 loss 0.5200 val_f1 0.7906 ema nan
+[linear] epoch   5/30 loss 0.5149 val_f1 0.7944 ema nan
+[linear] epoch   6/30 loss 0.5033 val_f1 0.7920 ema nan
+[linear] epoch   7/30 loss 0.5018 val_f1 0.7923 ema nan
+[linear] epoch   8/30 loss 0.4978 val_f1 0.7933 ema nan
+[linear] epoch   9/30 loss 0.4942 val_f1 0.7953 ema nan
+[linear] epoch  10/30 loss 0.4924 val_f1 0.7923 ema nan
+[linear] epoch  11/30 loss 0.4862 val_f1 0.7991 ema nan
+[linear] epoch  12/30 loss 0.4835 val_f1 0.8015 ema nan
+[linear] epoch  13/30 loss 0.4792 val_f1 0.8009 ema nan
+[linear] epoch  14/30 loss 0.4757 val_f1 0.7969 ema nan
+[linear] epoch  15/30 loss 0.4706 val_f1 0.7979 ema nan
+[linear] epoch  16/30 loss 0.4666 val_f1 0.8049 ema nan
+[linear] epoch  17/30 loss 0.4626 val_f1 0.7974 ema nan
+[linear] epoch  18/30 loss 0.4604 val_f1 0.8027 ema nan
+[linear] epoch  19/30 loss 0.4567 val_f1 0.8040 ema nan
+[linear] epoch  20/30 loss 0.4522 val_f1 0.8047 ema nan
+[linear] epoch  21/30 loss 0.4485 val_f1 0.8060 ema nan
+[linear] epoch  22/30 loss 0.4455 val_f1 0.8101 ema nan
+[linear] epoch  23/30 loss 0.4425 val_f1 0.8081 ema nan
+[linear] epoch  24/30 loss 0.4395 val_f1 0.8076 ema nan
+[linear] epoch  25/30 loss 0.4374 val_f1 0.8105 ema nan
+[linear] epoch  26/30 loss 0.4350 val_f1 0.8087 ema nan
+[linear] epoch  27/30 loss 0.4332 val_f1 0.8100 ema nan
+[linear] epoch  28/30 loss 0.4316 val_f1 0.8103 ema nan
+[linear] epoch  29/30 loss 0.4305 val_f1 0.8108 ema nan
+[linear] epoch  30/30 loss 0.4298 val_f1 0.8109 ema nan
+{
+  "name": "linear",
+  "kind": "mlp",
+  "cfg": {
+    "name": "linear",
+    "hidden": [],
+    "epochs": 30,
+    "seed": 269860790,
+    "batch_size": 512,
+    "lr": 0.003,
+    "dropout": 0.3
+  },
+  "val_f1": 0.8108979216686467,
+  "val_f1_top_hist": 0.8108979216686467,
+  "best_epoch": 29,
+  "params": 8196,
+  "val_f1_offsets": 0.8185208406026702,
+  "offsets": [
+    0.30000000000000027,
+    -0.5,
+    0.30000000000000027,
+    -0.3999999999999999
+  ],
+  "confusion": [
+    [
+      3387,
+      149,
+      688,
+      176
+    ],
+    [
+      92,
+      1832,
+      127,
+      99
+    ],
+    [
+      622,
+      218,
+      3392,
+      168
+    ],
+    [
+      62,
+      87,
+      96,
+      1905
+    ]
+  ],
+  "sec": 19.3
+}
+[compact] epoch   1/30 loss 0.6920 val_f1 0.7896 ema nan
+[compact] epoch   2/30 loss 0.5439 val_f1 0.7994 ema nan
+[compact] epoch   3/30 loss 0.4980 val_f1 0.8169 ema nan
+[compact] epoch   4/30 loss 0.4686 val_f1 0.8166 ema nan
+[compact] epoch   5/30 loss 0.4430 val_f1 0.8152 ema nan
+[compact] epoch   6/30 loss 0.4262 val_f1 0.8271 ema nan
+[compact] epoch   7/30 loss 0.4023 val_f1 0.8296 ema nan
+[compact] epoch   8/30 loss 0.3864 val_f1 0.8346 ema nan
+[compact] epoch   9/30 loss 0.3699 val_f1 0.8309 ema nan
+[compact] epoch  10/30 loss 0.3501 val_f1 0.8360 ema nan
+[compact] epoch  11/30 loss 0.3325 val_f1 0.8401 ema nan
+[compact] epoch  12/30 loss 0.3156 val_f1 0.8436 ema nan
+[compact] epoch  13/30 loss 0.2965 val_f1 0.8470 ema nan
+[compact] epoch  14/30 loss 0.2767 val_f1 0.8497 ema nan
+[compact] epoch  15/30 loss 0.2589 val_f1 0.8443 ema nan
+[compact] epoch  16/30 loss 0.2433 val_f1 0.8481 ema nan
+[compact] epoch  17/30 loss 0.2224 val_f1 0.8509 ema nan
+[compact] epoch  18/30 loss 0.2047 val_f1 0.8514 ema nan
+[compact] epoch  19/30 loss 0.1910 val_f1 0.8571 ema nan
+[compact] epoch  20/30 loss 0.1732 val_f1 0.8552 ema nan
+[compact] epoch  21/30 loss 0.1594 val_f1 0.8582 ema nan
+[compact] epoch  22/30 loss 0.1453 val_f1 0.8582 ema nan
+[compact] epoch  23/30 loss 0.1339 val_f1 0.8589 ema nan
+[compact] epoch  24/30 loss 0.1249 val_f1 0.8600 ema nan
+[compact] epoch  25/30 loss 0.1155 val_f1 0.8613 ema nan
+[compact] epoch  26/30 loss 0.1100 val_f1 0.8595 ema nan
+[compact] epoch  27/30 loss 0.1052 val_f1 0.8597 ema nan
+[compact] epoch  28/30 loss 0.1007 val_f1 0.8606 ema nan
+[compact] epoch  29/30 loss 0.0995 val_f1 0.8607 ema nan
+[compact] epoch  30/30 loss 0.0985 val_f1 0.8606 ema nan
+{
+  "name": "compact",
+  "kind": "mlp",
+  "cfg": {
+    "name": "compact",
+    "hidden": [
+      256
+    ],
+    "epochs": 30,
+    "seed": 269860790,
+    "batch_size": 512,
+    "lr": 0.003,
+    "dropout": 0.3
+  },
+  "val_f1": 0.8612513759342508,
+  "val_f1_top_hist": 0.8612513759342508,
+  "best_epoch": 24,
+  "params": 525572,
+  "val_f1_offsets": 0.8620798212107724,
+  "offsets": [
+    0.0,
+    -0.2999999999999998,
+    0.10000000000000009,
+    0.0
+  ],
+  "confusion": [
+    [
+      3768,
+      71,
+      449,
+      112
+    ],
+    [
+      71,
+      1834,
+      159,
+      86
+    ],
+    [
+      386,
+      135,
+      3770,
+      109
+    ],
+    [
+      63,
+      84,
+      108,
+      1895
+    ]
+  ],
+  "sec": 90.9
+}
+[mlp] epoch   1/30 loss 0.7038 val_f1 0.7745 ema nan
+[mlp] epoch   2/30 loss 0.5546 val_f1 0.7977 ema nan
+[mlp] epoch   3/30 loss 0.5132 val_f1 0.8151 ema nan
+[mlp] epoch   4/30 loss 0.4842 val_f1 0.8168 ema nan
+[mlp] epoch   5/30 loss 0.4618 val_f1 0.8219 ema nan
+[mlp] epoch   6/30 loss 0.4388 val_f1 0.8300 ema nan
+[mlp] epoch   7/30 loss 0.4221 val_f1 0.8297 ema nan
+[mlp] epoch   8/30 loss 0.4065 val_f1 0.8360 ema nan
+[mlp] epoch   9/30 loss 0.3868 val_f1 0.8344 ema nan
+[mlp] epoch  10/30 loss 0.3733 val_f1 0.8442 ema nan
+[mlp] epoch  11/30 loss 0.3545 val_f1 0.8402 ema nan
+[mlp] epoch  12/30 loss 0.3376 val_f1 0.8373 ema nan
+[mlp] epoch  13/30 loss 0.3209 val_f1 0.8453 ema nan
+[mlp] epoch  14/30 loss 0.3047 val_f1 0.8500 ema nan
+[mlp] epoch  15/30 loss 0.2843 val_f1 0.8459 ema nan
+[mlp] epoch  16/30 loss 0.2666 val_f1 0.8524 ema nan
+[mlp] epoch  17/30 loss 0.2493 val_f1 0.8547 ema nan
+[mlp] epoch  18/30 loss 0.2333 val_f1 0.8571 ema nan
+[mlp] epoch  19/30 loss 0.2187 val_f1 0.8590 ema nan
+[mlp] epoch  20/30 loss 0.2030 val_f1 0.8580 ema nan
+[mlp] epoch  21/30 loss 0.1888 val_f1 0.8606 ema nan
+[mlp] epoch  22/30 loss 0.1761 val_f1 0.8623 ema nan
+[mlp] epoch  23/30 loss 0.1649 val_f1 0.8628 ema nan
+[mlp] epoch  24/30 loss 0.1524 val_f1 0.8635 ema nan
+[mlp] epoch  25/30 loss 0.1441 val_f1 0.8640 ema nan
+[mlp] epoch  26/30 loss 0.1386 val_f1 0.8634 ema nan
+[mlp] epoch  27/30 loss 0.1314 val_f1 0.8642 ema nan
+[mlp] epoch  28/30 loss 0.1301 val_f1 0.8645 ema nan
+[mlp] epoch  29/30 loss 0.1256 val_f1 0.8641 ema nan
+[mlp] epoch  30/30 loss 0.1251 val_f1 0.8640 ema nan
+{
+  "name": "mlp",
+  "kind": "mlp",
+  "cfg": {
+    "name": "mlp",
+    "hidden": [
+      512,
+      256
+    ],
+    "epochs": 30,
+    "seed": 269860790,
+    "batch_size": 512,
+    "lr": 0.003,
+    "dropout": 0.3
+  },
+  "val_f1": 0.8645423295929339,
+  "val_f1_top_hist": 0.8645423295929339,
+  "best_epoch": 27,
+  "params": 1181444,
+  "val_f1_offsets": 0.8675989540748608,
+  "offsets": [
+    0.20000000000000018,
+    -0.09999999999999964,
+    0.40000000000000036,
+    -0.5999999999999999
+  ],
+  "confusion": [
+    [
+      3781,
+      79,
+      410,
+      130
+    ],
+    [
+      59,
+      1855,
+      145,
+      91
+    ],
+    [
+      356,
+      146,
+      3780,
+      118
+    ],
+    [
+      61,
+      76,
+      105,
+      1908
+    ]
+  ],
+  "sec": 206.3
+}
+[data] (131000, 2048) embeddings, classes: {np.str_('angry'): np.int64(44000), np.str_('neutral'): np.int64(21500), np.str_('positive'): np.int64(44000), np.str_('sad'): np.int64(21500)}
+[member 0] epoch   1/30 loss 0.8031 val_f1 0.7817 ema nan
+[member 0] epoch   2/30 loss 0.6838 val_f1 0.8094 ema nan
+[member 0] epoch   3/30 loss 0.6459 val_f1 0.8127 ema nan
+[member 0] epoch   4/30 loss 0.6231 val_f1 0.8226 ema nan
+[member 0] epoch   5/30 loss 0.6010 val_f1 0.8281 ema nan
+[member 0] epoch   6/30 loss 0.5870 val_f1 0.8317 ema nan
+[member 0] epoch   7/30 loss 0.5717 val_f1 0.8253 ema nan
+[member 0] epoch   8/30 loss 0.5564 val_f1 0.8269 ema nan
+[member 0] epoch   9/30 loss 0.5435 val_f1 0.8472 ema nan
+[member 0] epoch  10/30 loss 0.5259 val_f1 0.8505 ema nan
+[member 0] epoch  11/30 loss 0.5140 val_f1 0.8456 ema nan
+[member 0] epoch  12/30 loss 0.5003 val_f1 0.8524 ema nan
+[member 0] epoch  13/30 loss 0.4843 val_f1 0.8558 ema nan
+[member 0] epoch  14/30 loss 0.4709 val_f1 0.8561 ema nan
+[member 0] epoch  15/30 loss 0.4555 val_f1 0.8529 ema nan
+[member 0] epoch  16/30 loss 0.4437 val_f1 0.8501 ema nan
+[member 0] epoch  17/30 loss 0.4273 val_f1 0.8584 ema nan
+[member 0] epoch  18/30 loss 0.4166 val_f1 0.8598 ema nan
+[member 0] epoch  19/30 loss 0.4036 val_f1 0.8596 ema nan
+[member 0] epoch  20/30 loss 0.3892 val_f1 0.8598 ema nan
+[member 0] epoch  21/30 loss 0.3774 val_f1 0.8592 ema nan
+[member 0] epoch  22/30 loss 0.3696 val_f1 0.8630 ema nan
+[member 0] epoch  23/30 loss 0.3619 val_f1 0.8638 ema nan
+[member 0] epoch  24/30 loss 0.3529 val_f1 0.8610 ema nan
+[member 0] epoch  25/30 loss 0.3465 val_f1 0.8617 ema nan
+[member 0] epoch  26/30 loss 0.3424 val_f1 0.8647 ema nan
+[member 0] epoch  27/30 loss 0.3372 val_f1 0.8646 ema nan
+[member 0] epoch  28/30 loss 0.3367 val_f1 0.8645 ema nan
+[member 0] epoch  29/30 loss 0.3345 val_f1 0.8654 ema nan
+[member 0] epoch  30/30 loss 0.3341 val_f1 0.8655 ema nan
+[member 0] params=1,181,444 holdout macro-F1=0.8655 (best epoch 29)
+[member 1] epoch   1/30 loss 0.8034 val_f1 0.7845 ema nan
+[member 1] epoch   2/30 loss 0.6806 val_f1 0.7985 ema nan
+[member 1] epoch   3/30 loss 0.6519 val_f1 0.8214 ema nan
+[member 1] epoch   4/30 loss 0.6217 val_f1 0.8211 ema nan
+[member 1] epoch   5/30 loss 0.6016 val_f1 0.8173 ema nan
+[member 1] epoch   6/30 loss 0.5867 val_f1 0.8372 ema nan
+[member 1] epoch   7/30 loss 0.5720 val_f1 0.8373 ema nan
+[member 1] epoch   8/30 loss 0.5565 val_f1 0.8424 ema nan
+[member 1] epoch   9/30 loss 0.5419 val_f1 0.8384 ema nan
+[member 1] epoch  10/30 loss 0.5330 val_f1 0.8441 ema nan
+[member 1] epoch  11/30 loss 0.5142 val_f1 0.8434 ema nan
+[member 1] epoch  12/30 loss 0.5047 val_f1 0.8492 ema nan
+[member 1] epoch  13/30 loss 0.4866 val_f1 0.8543 ema nan
+[member 1] epoch  14/30 loss 0.4728 val_f1 0.8539 ema nan
+[member 1] epoch  15/30 loss 0.4607 val_f1 0.8493 ema nan
+[member 1] epoch  16/30 loss 0.4450 val_f1 0.8588 ema nan
+[member 1] epoch  17/30 loss 0.4283 val_f1 0.8552 ema nan
+[member 1] epoch  18/30 loss 0.4164 val_f1 0.8624 ema nan
+[member 1] epoch  19/30 loss 0.4032 val_f1 0.8589 ema nan
+[member 1] epoch  20/30 loss 0.3889 val_f1 0.8668 ema nan
+[member 1] epoch  21/30 loss 0.3800 val_f1 0.8641 ema nan
+[member 1] epoch  22/30 loss 0.3709 val_f1 0.8647 ema nan
+[member 1] epoch  23/30 loss 0.3620 val_f1 0.8649 ema nan
+[member 1] epoch  24/30 loss 0.3538 val_f1 0.8669 ema nan
+[member 1] epoch  25/30 loss 0.3472 val_f1 0.8684 ema nan
+[member 1] epoch  26/30 loss 0.3437 val_f1 0.8685 ema nan
+[member 1] epoch  27/30 loss 0.3396 val_f1 0.8664 ema nan
+[member 1] epoch  28/30 loss 0.3369 val_f1 0.8678 ema nan
+[member 1] epoch  29/30 loss 0.3350 val_f1 0.8681 ema nan
+[member 1] epoch  30/30 loss 0.3344 val_f1 0.8688 ema nan
+[member 1] params=1,181,444 holdout macro-F1=0.8688 (best epoch 29)
+[ensemble] holdout macro-F1=0.8702  with class-offset calibration=0.8721
+[confusion]
+[[1916   38  201   45]
+ [  32  944   69   30]
+ [ 167   65 1917   51]
+ [  35   52   53  935]]
+[done] weights written to models/final_seed269860790 in 434.5s
+[test] (6600, 2048) embeddings from public_test.npz; ensemble of 2 members
+[out] submissions/submission_seed_269860790.npz  label distribution: {'angry': 2235, 'neutral': 1109, 'positive': 2196, 'sad': 1060}  (2.3s)
