@@ -1,0 +1,51 @@
+name: lfs-probe
+on:
+  push:
+    branches: ['arena/e6944da1-a-base-sound-of-client-mtc']
+    paths: ['.github/workflows/lfs_probe.yml']
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Info
+        run: |
+          ls -la
+          ls -la train.npz
+          python3 -c "import numpy, sys; print('numpy', numpy.__version__, sys.version)"
+      - name: Stats
+        run: |
+          mkdir -p reports
+          python3 - <<'PY'
+          import numpy as np, json, hashlib
+          d = np.load('train.npz')
+          out = {'keys': list(d.keys())}
+          X = d['embeddings']; y = d['targets']
+          out['X_shape'] = list(X.shape); out['X_dtype'] = str(X.dtype)
+          out['y_shape'] = list(y.shape); out['y_dtype'] = str(y.dtype)
+          labels, counts = np.unique(y, return_counts=True)
+          out['classes'] = {str(k): int(v) for k, v in zip(labels, counts)}
+          out['nan'] = bool(np.isnan(X).any())
+          out['norms_head'] = [float(v) for v in np.linalg.norm(X[:5], axis=1)]
+          out['first_targets'] = [str(t) for t in y[:10]]
+          print(json.dumps(out, indent=2))
+          json.dump(out, open('reports/probe.json', 'w'), indent=2)
+          # small sample for local inspection
+          rng = np.random.default_rng(0)
+          idx = rng.choice(len(y), size=3000, replace=False)
+          np.save('reports/sample_X.npy', X[idx].astype(np.float16))
+          np.save('reports/sample_y.npy', y[idx])
+          PY
+      - name: Commit
+        run: |
+          git config user.name "lfs-probe-bot"
+          git config user.email "probe@example.com"
+          git add -f reports
+          git commit -m "probe: dataset stats [skip ci]" || echo "nothing to commit"
+          git push
