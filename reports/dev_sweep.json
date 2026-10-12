@@ -1,0 +1,269 @@
+{
+  "arch:lin": {
+    "f1": 0.7813220827883262,
+    "f1_offsets": 0.7875535180622537,
+    "best_hist": 0.7813220827883262,
+    "params": 8196,
+    "sec": 2.0,
+    "cfg": {
+      "epochs": 25,
+      "batch_size": 512,
+      "lr": 0.003,
+      "weight_decay": 0.0001,
+      "dropout": 0.3,
+      "hidden": [],
+      "seed": 0
+    }
+  },
+  "arch:h256": {
+    "f1": 0.7997237873244966,
+    "f1_offsets": 0.801723978054558,
+    "best_hist": 0.7997237873244966,
+    "params": 525572,
+    "sec": 5.7,
+    "cfg": {
+      "epochs": 25,
+      "batch_size": 512,
+      "lr": 0.003,
+      "weight_decay": 0.0001,
+      "dropout": 0.3,
+      "hidden": [
+        256
+      ],
+      "seed": 0
+    }
+  },
+  "arch:h512": {
+    "f1": 0.7951719368950665,
+    "f1_offsets": 0.7979600184527642,
+    "best_hist": 0.7951719368950665,
+    "params": 1051140,
+    "sec": 9.7,
+    "cfg": {
+      "epochs": 25,
+      "batch_size": 512,
+      "lr": 0.003,
+      "weight_decay": 0.0001,
+      "dropout": 0.3,
+      "hidden": [
+        512
+      ],
+      "seed": 0
+    }
+  },
+  "arch:h512_256": {
+    "f1": 0.7945418398228279,
+    "f1_offsets": 0.7986981941805695,
+    "best_hist": 0.7945418398228279,
+    "params": 1181444,
+    "sec": 12.4,
+    "cfg": {
+      "epochs": 25,
+      "batch_size": 512,
+      "lr": 0.003,
+      "weight_decay": 0.0001,
+      "dropout": 0.3,
+      "hidden": [
+        512,
+        256
+      ],
+      "seed": 0
+    }
+  },
+  "arch:h1024_512": {
+    "f1": 0.7943762260081685,
+    "f1_offsets": 0.7995241347440901,
+    "best_hist": 0.7943762260081685,
+    "params": 2625028,
+    "sec": 24.4,
+    "cfg": {
+      "epochs": 25,
+      "batch_size": 512,
+      "lr": 0.003,
+      "weight_decay": 0.0001,
+      "dropout": 0.3,
+      "hidden": [
+        1024,
+        512
+      ],
+      "seed": 0
+    }
+  },
+  "arch:h1024_512_256": {
+    "f1": 0.7905425393939559,
+    "f1_offsets": 0.7936896101022679,
+    "best_hist": 0.7905425393939559,
+    "params": 2755332,
+    "sec": 26.6,
+    "cfg": {
+      "epochs": 25,
+      "batch_size": 512,
+      "lr": 0.003,
+      "weight_decay": 0.0001,
+      "dropout": 0.3,
+      "hidden": [
+        1024,
+        512,
+        256
+      ],
+      "seed": 0
+    }
+  },
+  "arch:h2048": {
+    "f1": 0.7905101314260762,
+    "f1_offsets": 0.7919384386679686,
+    "best_hist": 0.7905101314260762,
+    "params": 4204548,
+    "sec": 34.8,
+    "cfg": {
+      "epochs": 25,
+      "batch_size": 512,
+      "lr": 0.003,
+      "weight_decay": 0.0001,
+      "dropout": 0.3,
+      "hidden": [
+        2048
+      ],
+      "seed": 0
+    }
+  },
+  "arch:h256_128": {
+    "f1": 0.7947298946133657,
+    "f1_offsets": 0.796253223725667,
+    "best_hist": 0.7947298946133657,
+    "params": 557956,
+    "sec": 6.2,
+    "cfg": {
+      "epochs": 25,
+      "batch_size": 512,
+      "lr": 0.003,
+      "weight_decay": 0.0001,
+      "dropout": 0.3,
+      "hidden": [
+        256,
+        128
+      ],
+      "seed": 0
+    }
+  },
+  "arch:h512_256_128": {
+    "f1": 0.7920262135366877,
+    "f1_offsets": 0.7949886556639886,
+    "best_hist": 0.7920262135366877,
+    "params": 1213828,
+    "sec": 13.1,
+    "cfg": {
+      "epochs": 25,
+      "batch_size": 512,
+      "lr": 0.003,
+      "weight_decay": 0.0001,
+      "dropout": 0.3,
+      "hidden": [
+        512,
+        256,
+        128
+      ],
+      "seed": 0
+    }
+  },
+  "norm:std": {
+    "f1": 0.7945418398228279,
+    "f1_offsets": 0.7986981941805695,
+    "best_hist": 0.7945418398228279,
+    "params": 1181444,
+    "sec": 12.0,
+    "cfg": {
+      "epochs": 25,
+      "batch_size": 512,
+      "lr": 0.003,
+      "weight_decay": 0.0001,
+      "dropout": 0.3,
+      "hidden": [
+        512,
+        256
+      ],
+      "seed": 0,
+      "input_norm": "none"
+    }
+  },
+  "norm:std+layernorm": {
+    "f1": 0.7992850208242017,
+    "f1_offsets": 0.8025784829719871,
+    "best_hist": 0.7992850208242017,
+    "params": 1185540,
+    "sec": 14.9,
+    "cfg": {
+      "epochs": 25,
+      "batch_size": 512,
+      "lr": 0.003,
+      "weight_decay": 0.0001,
+      "dropout": 0.3,
+      "hidden": [
+        512,
+        256
+      ],
+      "seed": 0,
+      "input_norm": "layernorm"
+    }
+  },
+  "norm:std+batchnorm": {
+    "f1": 0.8016842129068655,
+    "f1_offsets": 0.8034492376416938,
+    "best_hist": 0.8016842129068655,
+    "params": 1185540,
+    "sec": 14.7,
+    "cfg": {
+      "epochs": 25,
+      "batch_size": 512,
+      "lr": 0.003,
+      "weight_decay": 0.0001,
+      "dropout": 0.3,
+      "hidden": [
+        512,
+        256
+      ],
+      "seed": 0,
+      "input_norm": "batchnorm"
+    }
+  },
+  "norm:l2only": {
+    "f1": 0.7521281973721625,
+    "f1_offsets": 0.7575959883717007,
+    "best_hist": 0.7521281973721625,
+    "params": 1181444,
+    "sec": 12.3,
+    "cfg": {
+      "epochs": 25,
+      "batch_size": 512,
+      "lr": 0.003,
+      "weight_decay": 0.0001,
+      "dropout": 0.3,
+      "hidden": [
+        512,
+        256
+      ],
+      "seed": 0,
+      "input_norm": "l2"
+    }
+  },
+  "norm:raw": {
+    "f1": 0.7535970716130023,
+    "f1_offsets": 0.7611832660015427,
+    "best_hist": 0.7535970716130023,
+    "params": 1181444,
+    "sec": 11.9,
+    "cfg": {
+      "epochs": 25,
+      "batch_size": 512,
+      "lr": 0.003,
+      "weight_decay": 0.0001,
+      "dropout": 0.3,
+      "hidden": [
+        512,
+        256
+      ],
+      "seed": 0,
+      "input_norm": "none"
+    }
+  }
+}

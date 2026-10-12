@@ -230,7 +230,7 @@ def train_mlp(
             opt.step()
             sched.step()
             step += 1
-            tot_loss += float(loss) * len(sel)
+            tot_loss += float(loss.detach()) * len(sel)
             if ema_state is not None:
                 with torch.no_grad():
                     for k, v in model.state_dict().items():

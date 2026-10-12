@@ -1,1 +1,7 @@
 train.npz
+__pycache__/
+*.pyc
+.venv/
+models/
+submissions/
+reports/devdata.npz

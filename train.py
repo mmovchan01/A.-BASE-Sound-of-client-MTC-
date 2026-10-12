@@ -22,6 +22,7 @@ import argparse
 import json
 import os
 import random
+import secrets
 import sys
 import time
 
@@ -48,7 +49,7 @@ FINAL_CONFIG = dict(
     mixup_alpha=0.0,
     ema_decay=0.0,
 )
-ENSEMBLE_SIZE = 6
+ENSEMBLE_SIZE = 2
 HOLDOUT_FRAC = 0.05  # only used for calibration/reporting; the models train on the rest
 
 
@@ -63,13 +64,19 @@ def main():
     ap = argparse.ArgumentParser(description="Train the final emotion-classification model")
     ap.add_argument("--data", default="train.npz", help="path to the training npz (embeddings, targets)")
     ap.add_argument("--out", default=None, help="output directory for weights (default models/final_seed<SEED>)")
-    ap.add_argument("--seed", type=int, default=42)
-    ap.add_argument("--epochs", type=int, default=FINAL_CONFIG["epochs"])
+    ap.add_argument("--seed", type=int, default=None)
+    ap.add_argument("--config", default="final_config.json")
+    ap.add_argument("--epochs", type=int, default=None)
     ap.add_argument("--ensemble", type=int, default=ENSEMBLE_SIZE)
     ap.add_argument("--holdout", type=float, default=HOLDOUT_FRAC)
     ap.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     ap.add_argument("--threads", type=int, default=0, help="torch CPU threads (0 = default)")
     args = ap.parse_args()
+    if args.seed is None:
+        args.seed = secrets.randbelow(2**31)
+    if not 0 < args.holdout < 1 or args.ensemble < 1:
+        ap.error("holdout must be in (0,1) and ensemble >= 1")
+    torch.use_deterministic_algorithms(True)
 
     if args.threads:
         torch.set_num_threads(args.threads)
@@ -92,7 +99,11 @@ def main():
     X_ho = scaler.transform(X_ho_raw)
 
     cfg = dict(FINAL_CONFIG)
-    cfg["epochs"] = args.epochs
+    if os.path.exists(args.config):
+        with open(args.config) as f:
+            cfg.update(json.load(f).get("training", {}))
+    if args.epochs is not None:
+        cfg["epochs"] = args.epochs
 
     members, val_probas = [], []
     for k in range(args.ensemble):

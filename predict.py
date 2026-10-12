@@ -33,11 +33,13 @@ def load_ensemble(weights_dir: str, device: str = "cpu"):
     scaler = Standardizer.from_state_dict({k: np.asarray(v, dtype=np.float32) for k, v in meta["scaler"].items()})
     offsets = np.asarray(meta.get("class_offsets", [0.0] * len(meta["classes"])), dtype=np.float64)
     paths = sorted(glob.glob(os.path.join(weights_dir, "model_*.pt")))
+    if len(paths) != meta["ensemble_size"]:
+        raise ValueError("Checkpoint count does not match metadata")
     if not paths:
         raise FileNotFoundError(f"no model_*.pt found in {weights_dir}")
     models = []
     for p in paths:
-        ckpt = torch.load(p, map_location="cpu", weights_only=False)
+        ckpt = torch.load(p, map_location="cpu", weights_only=True)
         cfg = ckpt["cfg"]
         model = EmbeddingMLP(
             in_dim=meta["architecture"]["in_dim"],
@@ -75,12 +77,14 @@ def main():
     args = ap.parse_args()
 
     t0 = time.time()
-    models, scaler, offsets, meta = load_ensemble(args.weights)
+    models, scaler, offsets, meta = load_ensemble(args.weights, device=args.device)
     seed = meta.get("seed", 42)
     out_path = args.out or f"submission_seed_{seed}.npz"
 
     data = np.load(args.test, allow_pickle=False)
     X = np.asarray(data["embeddings"], dtype=np.float32)
+    if X.ndim != 2 or X.shape[1] != meta["architecture"]["in_dim"] or not np.isfinite(X).all():
+        raise ValueError("Invalid test embedding shape or non-finite values")
     print(f"[test] {X.shape} embeddings from {args.test}; ensemble of {len(models)} members")
 
     proba = predict_proba_ensemble(models, scaler.transform(X), batch_size=args.batch_size, device=args.device)
