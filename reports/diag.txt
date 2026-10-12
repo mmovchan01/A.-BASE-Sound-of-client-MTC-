@@ -1,0 +1,94 @@
+=== pwd / ls ===
+/home/runner/work/A.-BASE-Sound-of-client-MTC-/A.-BASE-Sound-of-client-MTC-
+total 1075588
+drwxr-xr-x 5 runner runner       4096 Oct 12 19:14 .
+drwxr-xr-x 3 runner runner       4096 Oct 12 19:13 ..
+drwxr-xr-x 8 runner runner       4096 Oct 12 19:14 .git
+-rw-r--r-- 1 runner runner         46 Oct 12 19:14 .gitattributes
+drwxr-xr-x 3 runner runner       4096 Oct 12 19:14 .github
+-rw-r--r-- 1 runner runner         10 Oct 12 19:14 .gitignore
+-rw-r--r-- 1 runner runner         30 Oct 12 19:14 README.md
+-rw-r--r-- 1 runner runner   50402567 Oct 12 19:14 public_test.npz
+drwxr-xr-x 2 runner runner       4096 Oct 12 19:14 reports
+-rw-r--r-- 1 runner runner   50403319 Oct 12 19:14 sample_submission.npz
+-rw-r--r-- 1 runner runner 1000558195 Oct 12 19:14 train.npz
+=== train.npz ===
+-rw-r--r-- 1 runner runner 1000558195 Oct 12 19:14 train.npz
+1000558195 train.npz
+=== head of train.npz ===
+0000000   P   K 003 004   -  \0  \0  \0  \b  \0  \0  \0   !  \0   B   i
+0000020   8  \t 377 377 377 377 377 377 377 377 016  \0 024  \0   e   m
+0000040   b   e   d   d   i   n   g   s   .   n   p   y 001  \0 020  \0
+0000060 200  \0 367   ?  \0  \0  \0  \0 303 025 242   ;  \0  \0  \0  \0
+0000100 224 325 367   ? 227 357 333 300   q   # 222 235 021   J 331   {
+=== git lfs ===
+5c0a6c6f83 * train.npz
+git-lfs/3.8.0 (GitHub; linux amd64; go 1.27.0)
+git version 2.55.0
+
+Endpoint=https://github.com/mmovchan01/A.-BASE-Sound-of-client-MTC-.git/info/lfs (auth=none)
+LocalWorkingDir=/home/runner/work/A.-BASE-Sound-of-client-MTC-/A.-BASE-Sound-of-client-MTC-
+LocalGitDir=/home/runner/work/A.-BASE-Sound-of-client-MTC-/A.-BASE-Sound-of-client-MTC-/.git
+LocalGitStorageDir=/home/runner/work/A.-BASE-Sound-of-client-MTC-/A.-BASE-Sound-of-client-MTC-/.git
+LocalMediaDir=/home/runner/work/A.-BASE-Sound-of-client-MTC-/A.-BASE-Sound-of-client-MTC-/.git/lfs/objects
+LocalReferenceDirs=
+TempDir=/home/runner/work/A.-BASE-Sound-of-client-MTC-/A.-BASE-Sound-of-client-MTC-/.git/lfs/tmp
+ConcurrentTransfers=8
+TusTransfers=false
+BasicTransfersOnly=false
+SkipDownloadErrors=false
+FetchRecentAlways=false
+FetchRecentRefsDays=7
+FetchRecentCommitsDays=0
+FetchRecentRefsIncludeRemotes=true
+PruneOffsetDays=3
+PruneVerifyRemoteAlways=false
+PruneVerifyUnreachableAlways=false
+PruneRemoteName=origin
+LfsStorageDir=/home/runner/work/A.-BASE-Sound-of-client-MTC-/A.-BASE-Sound-of-client-MTC-/.git/lfs
+AccessDownload=none
+AccessUpload=none
+DownloadTransfers=basic,lfs-standalone-file,ssh
+UploadTransfers=basic,lfs-standalone-file,ssh
+GIT_EXEC_PATH=/usr/lib/git-core
+git config filter.lfs.process = "git-lfs filter-process"
+git config filter.lfs.smudge = "git-lfs smudge -- %f"
+git config filter.lfs.clean = "git-lfs clean -- %f"
+=== python ===
+Python 3.12.3
+/usr/bin/python3
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'numpy'
+NO NUMPY
+numpy ok 2.5.4
+size 1000558195
+STATS: {
+  "keys": [
+    "embeddings",
+    "targets"
+  ],
+  "X_shape": [
+    131000,
+    2048
+  ],
+  "X_dtype": "float32",
+  "y_shape": [
+    131000
+  ],
+  "y_dtype": "<U8",
+  "classes": {
+    "angry": 44000,
+    "neutral": 21500,
+    "positive": 44000,
+    "sad": 21500
+  },
+  "nan": false,
+  "norms_head": [
+    1.4142135381698608,
+    1.4142134189605713,
+    1.4142136573791504,
+    1.4142135381698608,
+    1.4142134189605713
+  ]
+}
