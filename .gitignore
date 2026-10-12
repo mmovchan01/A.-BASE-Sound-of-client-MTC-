@@ -1,1 +1,5 @@
 train.npz
+artifacts/
+submission_seed_*.npz
+__pycache__/
+.venv/
