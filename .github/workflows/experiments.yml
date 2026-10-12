@@ -1,0 +1,71 @@
+name: experiments
+on:
+  push:
+    branches: ['arena/e6944da1-a-base-sound-of-client-mtc']
+    paths: ['.github/workflows/experiments.yml', 'scripts/experiment.py', 'mtc_lib/**']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  prep-config:
+    runs-on: ubuntu-latest
+    outputs:
+      configs: ${{ steps.gen.outputs.configs }}
+    steps:
+      - id: gen
+        run: |
+          python3 - <<'PY'
+          import json, os
+          r1 = [
+            {"name": "lin_std", "kind": "mlp", "hidden": [], "epochs": 40, "lr": 3e-3},
+            {"name": "mlp_h256", "kind": "mlp", "hidden": [256]},
+            {"name": "mlp_base", "kind": "mlp", "hidden": [512, 256]},
+            {"name": "mlp_h1024", "kind": "mlp", "hidden": [1024]},
+            {"name": "mlp_base_ls05", "kind": "mlp", "hidden": [512, 256], "label_smoothing": 0.05},
+            {"name": "mlp_base_mixup02", "kind": "mlp", "hidden": [512, 256], "mixup_alpha": 0.2},
+            {"name": "mlp_base_ema999", "kind": "mlp", "hidden": [512, 256], "ema_decay": 0.999},
+            {"name": "mlp_base_cwnone", "kind": "mlp", "hidden": [512, 256], "class_weight_mode": "none"},
+            {"name": "mlp_base_dr05", "kind": "mlp", "hidden": [512, 256], "dropout": 0.5},
+            {"name": "mlp_base_ep80", "kind": "mlp", "hidden": [512, 256], "epochs": 80, "lr": 2e-3},
+            {"name": "mlp_bnin", "kind": "mlp", "hidden": [512, 256], "input_norm": "batchnorm"},
+            {"name": "knn16", "kind": "knn", "k": 16, "temp": 20.0},
+          ]
+          print(json.dumps(json.dumps(r1)))
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+              f.write("configs=" + json.dumps(r1) + "\n")
+          PY
+  run:
+    needs: prep-config
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      max-parallel: 12
+      matrix:
+        config: ${{ fromJson(needs.prep-config.outputs.configs) }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: deps
+        run: |
+          python3 -m pip install --quiet --break-system-packages numpy
+          python3 -m pip install --quiet --break-system-packages torch --index-url https://download.pytorch.org/whl/cpu
+          python3 -c "import torch, numpy; print(torch.__version__, numpy.__version__)"
+      - name: run
+        run: |
+          NAME=$(python3 -c "import json,sys;print(json.loads('''${{ toJson(matrix.config) }}''')['name'])")
+          python3 scripts/experiment.py --config '${{ toJson(matrix.config) }}' --out-dir reports/jobs
+          echo "job_name=$NAME" >> $GITHUB_ENV
+      - name: commit results
+        if: always()
+        run: |
+          git config user.name "exp-bot"
+          git config user.email "exp-bot@example.com"
+          git add -f reports
+          git commit -m "exp: ${{ toJson(matrix.config) }} [skip ci]" || echo "nothing to commit"
+          for i in 1 2 3 4 5; do
+            git pull --rebase --autostash origin arena/e6944da1-a-base-sound-of-client-mtc && git push origin HEAD:arena/e6944da1-a-base-sound-of-client-mtc && break || sleep 5
+          done
