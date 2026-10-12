@@ -1,5 +1,8 @@
 name: Train and package
 on:
+  push:
+    branches: ['arena/e6944da1-a-base-sound-of-client-mtc']
+    paths: ['.github/workflows/experiments.yml']
   workflow_dispatch:
 permissions:
   contents: write
